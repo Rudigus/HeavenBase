@@ -1,0 +1,8 @@
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\bin\Release\MapleLib.dll
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\bin\Release\NAudio.dll
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\bin\Release\NAudio.pdb
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\bin\Release\NAudio.xml
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\obj\Release\MapleLib.csprojAssemblyReference.cache
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\obj\Release\MapleLib.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\obj\Release\MapleLib.csproj.CopyComplete
+C:\Users\rodri\Google Drive\MapleRip\WzVisualizer-master\WzVisualizer-master\MapleLib\obj\Release\MapleLib.dll
