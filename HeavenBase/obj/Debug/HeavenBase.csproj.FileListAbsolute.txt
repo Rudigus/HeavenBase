@@ -1,0 +1,40 @@
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\HeavenBase.exe.config
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\HeavenBase.exe
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\HeavenBase.pdb
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\MapleLib.dll
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\NAudio.dll
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\NAudio.pdb
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\bin\Debug\NAudio.xml
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.csprojAssemblyReference.cache
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\MainWindow.g.cs
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\App.g.cs
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase_MarkupCompile.cache
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase_MarkupCompile.lref
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\MainWindow.baml
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.g.resources
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.Properties.Resources.resources
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.csproj.GenerateResource.cache
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.csproj.CopyComplete
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.exe
+C:\Users\rodri\Google Drive\MapleRip\Wiki Handtool\HeavenBase\obj\Debug\HeavenBase.pdb
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\HeavenBase.exe.config
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\HeavenBase.exe
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\HeavenBase.pdb
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\MapleLib.dll
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\NAudio.dll
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\NAudio.pdb
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\bin\Debug\NAudio.xml
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csprojAssemblyReference.cache
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\MainWindow.g.cs
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\App.g.cs
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase_MarkupCompile.cache
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase_MarkupCompile.lref
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\MainWindow.baml
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.g.resources
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.Properties.Resources.resources
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.GenerateResource.cache
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.CopyComplete
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.exe
+C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Debug\HeavenBase.pdb

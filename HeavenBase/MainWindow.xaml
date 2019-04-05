@@ -1,0 +1,35 @@
+﻿<Window x:Class="HeavenBase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeavenBase"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        mc:Ignorable="d"
+        Title="HeavenBase" Height="400" Width="400">
+    <Window.Resources>
+        <Style TargetType="DataGridCell">
+            <EventSetter Event="Selected" Handler="EventSetter_OnHandlerSelected"/>
+            <EventSetter Event="LostFocus" Handler="EventSetter_OnHandlerLostFocus"/>
+        </Style>
+    </Window.Resources>
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0">Maplestory's AppData Path</TextBlock>
+            <TextBox Margin="0 0 10 0" x:Name="PathTextBox" PreviewMouseDown="PathTextBox_Click" IsReadOnly="true" Background="#eee" Grid.Row="1" Grid.Column="0"/>
+            <Button x:Name="LoadButton" Click="LoadButton_Click" Grid.Row="1" Grid.Column="1" Content="Load"/>
+            <DataGrid x:Name="infoGrid" Margin="0 10 0 0" Grid.Row="2" Grid.ColumnSpan="2" 
+                      IsReadOnly="True" SelectionUnit="Cell" MinRowHeight="30">
+            </DataGrid>
+        </Grid>
+    </Border>
+</Window>
