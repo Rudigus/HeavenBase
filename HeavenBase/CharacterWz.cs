@@ -76,5 +76,14 @@ namespace HeavenBase
         {
             FamiliarImage = FamiliarDirectory.GetImageByName($@"{familiarID}.img");
         }
+
+        // Familiar/{FamiliarID}.img/info/level
+        public int GetLevel()
+        {
+            if (FamiliarImage.GetFromPath($@"info/level") == null)
+                return 0;
+            int familiarLevel = FamiliarImage.GetFromPath($@"info/level").GetInt();
+            return familiarLevel;
+        }
     }
 }

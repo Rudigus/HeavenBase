@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace HeavenBase
 {
@@ -12,6 +13,7 @@ namespace HeavenBase
         public int FamiliarID { get; set; } // CharacterWz - GetFamiliarID()
         public string MobName { get; set; } // StringWz - GetMobName()
         public string CardName { get; set; } // StringWz - GetCardName()
+        public int Level { get; set; } // Still in testing.
         public string Rarity { get; set; } // CharacterWz - GetRarity()
         public string SkillName { get; set; } // StringWz - GetSkillName()
         public string SkillDescription { get; set; } // StringWz - GetSkillDesc()
@@ -24,7 +26,6 @@ namespace HeavenBase
 
         public Bitmap CardImage { get; set; } // UIWz - GetCardImage() - Can be found at ItemWz Consume too
         public Bitmap MobImage { get; set; }
-        public int Level { get; set; }
         public int Att { get; set; }
         public int PassiveEffectBonus { get; set; }
         public string SkillCategory { get; set; } // Check for CompressedIntProperty to get the category

@@ -31,7 +31,8 @@
             <TextBlock Grid.Row="0" Grid.Column="2">Search</TextBlock>
             <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" Grid.Row="1" Grid.Column="2"/>
             <DataGrid x:Name="infoGrid" Margin="0 10 0 0" Grid.Row="2" Grid.ColumnSpan="3" 
-                      IsReadOnly="True" SelectionUnit="Cell" MinRowHeight="30">
+                      IsReadOnly="True" SelectionUnit="Cell" MinRowHeight="30" AutoGeneratingColumn="InfoGrid_AutoGeneratingColumn"
+                      >
             </DataGrid>
         </Grid>
     </Border>
