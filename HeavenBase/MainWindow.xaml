@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HeavenBase"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
-        Title="HeavenBase" Height="400" Width="400">
+        Title="HeavenBase" Height="400" Width="600">
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <EventSetter Event="Selected" Handler="EventSetter_OnHandlerSelected"/>
@@ -21,13 +21,16 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0">Maplestory's AppData Path</TextBlock>
             <TextBox Margin="0 0 10 0" x:Name="PathTextBox" PreviewMouseDown="PathTextBox_Click" IsReadOnly="true" Background="#eee" Grid.Row="1" Grid.Column="0"/>
-            <Button x:Name="LoadButton" Click="LoadButton_Click" Grid.Row="1" Grid.Column="1" Content="Load"/>
-            <DataGrid x:Name="infoGrid" Margin="0 10 0 0" Grid.Row="2" Grid.ColumnSpan="2" 
+            <Button Margin="0 0 10 0"  x:Name="LoadButton" Click="LoadButton_Click" Grid.Row="1" Grid.Column="1" Content="Load"/>
+            <TextBlock Grid.Row="0" Grid.Column="2">Search</TextBlock>
+            <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" Grid.Row="1" Grid.Column="2"/>
+            <DataGrid x:Name="infoGrid" Margin="0 10 0 0" Grid.Row="2" Grid.ColumnSpan="3" 
                       IsReadOnly="True" SelectionUnit="Cell" MinRowHeight="30">
             </DataGrid>
         </Grid>

@@ -73,5 +73,39 @@ namespace HeavenBase
             firstCol.SortDirection = ListSortDirection.Ascending;
             infoGrid.Items.SortDescriptions.Add(new SortDescription(infoGrid.Columns[0].SortMemberPath, ListSortDirection.Ascending));
         }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filterText = ((TextBox)sender).Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(infoGrid.ItemsSource);
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                cv.Filter = o => {
+                    /* change to get data row value */
+                    Familiar p = o as Familiar;
+                    return p.FamiliarID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.MobName.ToUpper().Contains(filterText.ToUpper()) ||
+                    p.CardName.ToUpper().Contains(filterText.ToUpper()) ||
+                    p.Rarity.ToUpper().Contains(filterText.ToUpper()) ||
+                    p.SkillName.ToUpper().Contains(filterText.ToUpper()) ||
+                    p.SkillDescription.ToUpper().Contains(filterText.ToUpper()) ||
+                    p.Range.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.PassiveEffect.ToUpper().Contains(filterText.ToUpper()) ||
+                    p.MobID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.CardID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.SkillID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.PassiveEffectID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.Level.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.Att.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.PassiveEffectBonus.ToString().ToUpper().Contains(filterText.ToUpper()) ||
+                    p.SkillCategory.ToUpper().Contains(filterText.ToUpper());
+                    /* end change to get data row value */
+                };
+            } else
+            {
+                cv.Filter = null;
+            }
+        }
     }
 }

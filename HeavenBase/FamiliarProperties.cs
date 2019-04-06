@@ -50,6 +50,7 @@ namespace HeavenBase
                     Rarity = character.GetRarity(),
                     CardID = cardID,
                     CardName = stringM.GetCardName(cardID),
+                    SkillCategory = "",
 
                 });
             }

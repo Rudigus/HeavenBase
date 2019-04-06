@@ -21,6 +21,7 @@ namespace HeavenBase
         public int CardID { get; set; } // EtcWz - GetCardID()
         public int SkillID { get; set; } // CharacterWz - GetSkillID()
         public int PassiveEffectID { get; set; } // EtcWz - GetPassiveEffectID()
+
         public Bitmap CardImage { get; set; } // UIWz - GetCardImage() - Can be found at ItemWz Consume too
         public Bitmap MobImage { get; set; }
         public int Level { get; set; }
