@@ -63,7 +63,7 @@ namespace HeavenBase
                     FamiliarID = familiarID,
                     MobID = mobID,
                     MobName = stringM.GetMobName(mobID),
-                    CardImage = ui.GetCardImage(familiarID),
+                    //CardImage = ui.GetCardImage(familiarID),
                     SkillID = skillID,
                     SkillName = stringM.GetSkillName(skillID),
                     SkillDescription = stringM.GetSkillDesc(skillID),
@@ -73,7 +73,7 @@ namespace HeavenBase
                     Rarity = character.GetRarity(),
                     CardID = cardID,
                     CardName = stringM.GetCardName(cardID),
-                    SkillCategory = "",
+                    //SkillCategory = "",
                     Level = level,
 
                 });
