@@ -85,5 +85,14 @@ namespace HeavenBase
             int familiarLevel = FamiliarImage.GetFromPath($@"info/level").GetInt();
             return familiarLevel;
         }
+
+        // Familiar/{FamiliarID}.img/info/pad
+        public int GetATT()
+        {
+            if (FamiliarImage.GetFromPath($@"info/pad") == null)
+                return 0;
+            int att = FamiliarImage.GetFromPath($@"info/pad").GetInt();
+            return att;
+        }
     }
 }

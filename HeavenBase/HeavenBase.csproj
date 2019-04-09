@@ -65,7 +65,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EtcWz.cs" />
+    <Compile Include="ItemWz.cs" />
     <Compile Include="MobWz.cs" />
+    <Compile Include="Skill001Wz.cs" />
     <Compile Include="StringWz.cs" />
     <Compile Include="UIWz.cs" />
     <Page Include="MainWindow.xaml">

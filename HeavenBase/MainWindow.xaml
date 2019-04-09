@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:HeavenBase"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
-        Title="HeavenBase" Height="400" Width="600">
+        Title="HeavenBase" Height="400" Width="600"
+        ResizeMode="CanResizeWithGrip">
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <EventSetter Event="Selected" Handler="EventSetter_OnHandlerSelected"/>

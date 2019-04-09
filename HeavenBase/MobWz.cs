@@ -25,6 +25,14 @@ namespace HeavenBase
             return level;
         }
 
+        public int GetATT()
+        {
+            if (MobImage == null)
+                return 0;
+            int att = MobImage.GetFromPath($@"info/PADamage").GetInt();
+            return att;
+        }
+
         public void SetMobImage(int mobID, WzFile mobWZ)
         {
             if (mobWZ.WzDirectory.GetImageByName($@"{mobID}.img") != null)

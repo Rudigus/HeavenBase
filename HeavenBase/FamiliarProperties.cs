@@ -34,29 +34,44 @@ namespace HeavenBase
             WzFile uiFile = new WzFile(PathIO.Combine(chosenPath, "UI.wz"), WzMapleVersion.CLASSIC);
             WzFile mobFile = new WzFile(PathIO.Combine(chosenPath, "Mob.wz"), WzMapleVersion.CLASSIC);
             WzFile mob2File = new WzFile(PathIO.Combine(chosenPath, "Mob2.wz"), WzMapleVersion.CLASSIC);
+            WzFile skill001File = new WzFile(PathIO.Combine(chosenPath, "Skill001.wz"), WzMapleVersion.CLASSIC);
+            WzFile itemFile = new WzFile(PathIO.Combine(chosenPath, "Item.wz"), WzMapleVersion.CLASSIC);
             CharacterWz character = new CharacterWz(characterFile);
             EtcWz etc = new EtcWz(etcFile);
             StringWz stringM = new StringWz(stringFile);
             UIWz ui = new UIWz(uiFile);
             MobWz mob = new MobWz(mobFile);
             MobWz mob2 = new MobWz(mob2File);
+            Skill001Wz skill001 = new Skill001Wz(skill001File);
+            ItemWz item = new ItemWz(itemFile);
             int loopNumber = character.GetFamiliarQuantity();
             for (int i = 0; i < loopNumber; i++)
             {
+                
                 int familiarID = character.GetFamiliarID(i);
                 character.SetFamiliarImage(familiarID);
                 int mobID = etc.GetMobID(familiarID);
+                mob.SetMobImage(mobID, mobFile);
+                mob2.SetMobImage(mobID, mob2File);
                 int skillID = character.GetSkillID();
                 int passiveEffectID = etc.GetPassiveEffectID(familiarID);
                 int cardID = etc.GetCardID(familiarID);
-                int level = character.GetLevel();
+                int level = character.GetLevel(); // DON'T CHANGE THE ORDER, OR IT'LL BE MESSED UP
                 if (level == 0) {
-                    mob.SetMobImage(mobID, mobFile);
                     level = mob.GetLevel();
                 }
-                if (level == 0) {
-                    mob2.SetMobImage(mobID, mob2File);
+                if (level == 0)
+                {
                     level = mob2.GetLevel();
+                }
+                int att = character.GetATT(); // SAME AS LEVEL, DON'T CHANGE ORDER
+                if (att == 0)
+                {
+                    att = mob.GetATT();
+                }
+                if (att == 0)
+                {
+                    att = mob2.GetATT();
                 }
                 familiars.Add(new Familiar()
                 {
@@ -73,9 +88,11 @@ namespace HeavenBase
                     Rarity = character.GetRarity(),
                     CardID = cardID,
                     CardName = stringM.GetCardName(cardID),
-                    //SkillCategory = "",
+                    SkillCategory = skill001.GetSkillCategory(skillID),
                     Level = level,
-
+                    ATT = att,
+                    PassiveEffectTarget = item.GetPassiveEffectTarget(passiveEffectID),
+                    PassiveEffectBonus = item.GetPassiveEffectBonus(passiveEffectID),
                 });
             }
             characterFile.Dispose();
@@ -84,12 +101,16 @@ namespace HeavenBase
             uiFile.Dispose();
             mobFile.Dispose();
             mob2File.Dispose();
+            skill001File.Dispose();
+            itemFile.Dispose();
             characterFile = null;
             etcFile = null;
             stringFile = null;
             uiFile = null;
             mobFile = null;
             mob2File = null;
+            skill001File = null;
+            itemFile = null;
 
             return familiars;
         }
