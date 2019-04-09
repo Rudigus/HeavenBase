@@ -1,2 +1,2 @@
-# heavenbase
+# HeavenBase
 Self-descriptive.
