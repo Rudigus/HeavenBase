@@ -1,2 +1,2 @@
 # HeavenBase
-Self-descriptive.
+The right place to look for familiar info.
