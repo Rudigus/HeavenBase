@@ -84,7 +84,7 @@ namespace HeavenBase
         private void EventSetter_OnHandlerLostFocus(object sender, RoutedEventArgs e)
         {
             DataGridRow dgr = FindParent<DataGridRow>(sender as DataGridCell);
-            dgr.Background = new SolidColorBrush(Colors.White);
+            dgr.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFdcdcdc"));
         }
 
         public static T FindParent<T>(DependencyObject child) where T : DependencyObject
@@ -161,14 +161,5 @@ namespace HeavenBase
 
         #endregion
 
-        private void InfoGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            if(e.PropertyName == "CardImage")
-            {
-                var templateColumn = new DataGridTemplateColumn();
-                templateColumn.Header = e.PropertyName;
-                e.Column = templateColumn;
-            }
-        }
     }
 }

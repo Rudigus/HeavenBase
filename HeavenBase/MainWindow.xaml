@@ -7,11 +7,30 @@
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="HeavenBase" Height="400" Width="600"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResizeWithGrip"
+        WindowState="Maximized"
+        Style="{DynamicResource WindowStyle}">
     <Window.Resources>
+        <Style x:Key="WindowStyle" TargetType="Window">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/#Exo 2"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="#dcdcdc"/>
+            <Setter Property="Foreground" Value="#003366"/>
+        </Style>
         <Style TargetType="DataGridCell">
             <EventSetter Event="Selected" Handler="EventSetter_OnHandlerSelected"/>
             <EventSetter Event="LostFocus" Handler="EventSetter_OnHandlerLostFocus"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#dcdcdc"/>
+            <Setter Property="RowBackground" Value="#dcdcdc"/>
+            <Setter Property="Foreground" Value="#003366"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/#Roboto Slab"/>
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="FontFamily" Value="pack://application:,,,/resources/#Roboto Slab"/>
         </Style>
     </Window.Resources>
     <Border Padding="10">
@@ -36,15 +55,16 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="pack://application:,,,/Resources/BigSpiderFamiliar.png"/>
+                            <Image Source="pack://application:,,,/resources/BigSpiderFamiliar.png"/>
                             <TextBlock Margin="5" VerticalAlignment="Center">Familiars</TextBlock>
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
             </TabControl>
             <DataGrid x:Name="familiarGrid" IsReadOnly="True" SelectionUnit="Cell" 
-                              MinRowHeight="30" AutoGeneratingColumn="InfoGrid_AutoGeneratingColumn"
-                      Grid.Row="3" Grid.ColumnSpan="3">
+                              MinRowHeight="30" Grid.Row="3" Grid.ColumnSpan="3">
+                <DataGrid.Columns>
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
     </Border>

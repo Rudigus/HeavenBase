@@ -69,6 +69,8 @@ namespace HeavenBase
                 passiveEffectBonus += $@"MesoDropRate: +{ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/prob").GetInt()}%, ";
             if (ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/itemupbyitem") != null)
                 passiveEffectBonus += $@"ItemDropRate: +{ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/prob").GetInt()}%, ";
+            if (ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/reward/meso") != null)
+                passiveEffectBonus += $@"Meso: +{ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/reward/meso").GetInt()}, ";
             if (ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/familiar/decFatigue") != null)
                 passiveEffectBonus += $@"FamiliarVitality: +{ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/familiar/decFatigue").GetInt()}, ";
             if (ConsumeImage.GetFromPath($@"0{passiveEffectID}/spec/incFatigue") != null)
