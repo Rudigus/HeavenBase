@@ -1,0 +1,15 @@
+EXPRESSION
+
+([^	]+)			([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)	([^	]+)
+
+LINK
+
+https://regexr.com/4ck5e
+
+TEXT
+
+9960262			66	168	Zombie Mushmom	Zombie Mushmom Familiar	Uncommon	Deadly Poison	Poison	Attack with a 80% chance of poisoning 3 enemies for 6 seconds.	500	While summoned, consumes Vitality to occasionally produce a small amount of mesos.	Meso: +10, FamiliarVitality: -50, Interval: 600s.	Individual	6300005	2870262	810	2860291
+
+TOOL
+
+{{Useable/Familiar <!--$15-->|name=$5<!--$1-->|image=[[File:Use $5.png]]|lvl=$2|rar=$6|cat=$8|skilln=$7|desc=$9|att=$3|range=$10|passive=$11|passivea=$12|target=$13|mob=[[$4]]|note=}}{{Items}}
