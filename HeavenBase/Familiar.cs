@@ -10,9 +10,12 @@ namespace HeavenBase
 {
     public class Familiar
     {
+        public int HasCardImage { get; set; }
+
+        public int HasMobImage { get; set; }
         public int FamiliarID { get; set; } // CharacterWz - GetFamiliarID()
-        //public Bitmap CardImage { get; set; } // UIWz - GetCardImage() - Can be found at ItemWz Consume too
-        //public Bitmap MobImage { get; set; }
+        public BitmapSource CardImage { get; set; } // UIWz - GetCardImage() - Can be found at ItemWz Consume too
+        public BitmapSource MobImage { get; set; } // MobWz - GetMobImage()
         public int Level { get; set; } // CharacterWz - GetLevel() - Needs so much memory :(
         public int ATT { get; set; } // Same ATT as the mob itself.
         public string MobName { get; set; } // StringWz - GetMobName()

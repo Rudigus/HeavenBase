@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 using WinForms = System.Windows.Forms;
 
@@ -131,7 +132,8 @@ namespace HeavenBase
 
             if (!string.IsNullOrEmpty(filterText))
             {
-                cv.Filter = o => {
+                cv.Filter = o =>
+                {
                     /* change to get data row value */
                     Familiar p = o as Familiar;
                     return p.FamiliarID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
@@ -146,14 +148,15 @@ namespace HeavenBase
                     p.CardID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
                     p.SkillID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
                     p.PassiveEffectID.ToString().ToUpper().Contains(filterText.ToUpper()) ||
-                    p.Level.ToString().ToUpper().Contains(filterText.ToUpper())  ||
+                    p.Level.ToString().ToUpper().Contains(filterText.ToUpper()) ||
                     p.ATT.ToString().ToUpper().Contains(filterText.ToUpper()) ||
                     p.PassiveEffectBonus.ToString().ToUpper().Contains(filterText.ToUpper()) ||
                     p.PassiveEffectTarget.ToUpper().Contains(filterText.ToUpper()) ||
                     p.SkillCategory.ToUpper().Contains(filterText.ToUpper());
                     /* end change to get data row value */
                 };
-            } else
+            }
+            else
             {
                 cv.Filter = null;
             }
@@ -161,5 +164,14 @@ namespace HeavenBase
 
         #endregion
 
+        private void RowSelectionCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            familiarGrid.SelectionUnit = DataGridSelectionUnit.FullRow;
+        }
+
+        private void RowSelectionCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            familiarGrid.SelectionUnit = DataGridSelectionUnit.CellOrRowHeader;
+        }
     }
 }

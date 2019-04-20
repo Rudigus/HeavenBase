@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HeavenBase"
-        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:custom="clr-namespace:HeavenBase"
         mc:Ignorable="d"
         Title="HeavenBase" Height="400" Width="600"
         ResizeMode="CanResizeWithGrip"
@@ -61,9 +60,43 @@
                     </TabItem.Header>
                 </TabItem>
             </TabControl>
-            <DataGrid x:Name="familiarGrid" IsReadOnly="True" SelectionUnit="Cell" 
-                              MinRowHeight="30" Grid.Row="3" Grid.ColumnSpan="3">
+            <CheckBox x:Name="RowSelectionCheckbox" Content="RowSelection" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                      Checked="RowSelectionCheckbox_Checked" Unchecked="RowSelectionCheckbox_Unchecked"/>
+            <DataGrid x:Name="familiarGrid" IsReadOnly="True" SelectionUnit="CellOrRowHeader" 
+                              MinRowHeight="30" Grid.Row="3" Grid.ColumnSpan="3"
+                      AutoGenerateColumns="False">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="FamiliarID" Binding="{Binding FamiliarID}"/>
+                    <DataGridTemplateColumn Header="MobImage" SortMemberPath="HasMobImage">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Stretch="None" Source="{Binding MobImage}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="CardImage" SortMemberPath="HasCardImage">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Stretch="None" Source="{Binding CardImage}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Level" Binding="{Binding Level}"/>
+                    <DataGridTextColumn Header="ATT" Binding="{Binding ATT}"/>
+                    <DataGridTextColumn Header="MobName" Binding="{Binding MobName}"/>
+                    <DataGridTextColumn Header="CardName" Binding="{Binding CardName}"/>
+                    <DataGridTextColumn Header="Rarity" Binding="{Binding Rarity}"/>
+                    <DataGridTextColumn Header="SkillName" Binding="{Binding SkillName}"/>
+                    <DataGridTextColumn Header="SkillCategory" Binding="{Binding SkillCategory}"/>
+                    <DataGridTextColumn Header="SkillDescription" Binding="{Binding SkillDescription}"/>
+                    <DataGridTextColumn Header="Range" Binding="{Binding Range}"/>
+                    <DataGridTextColumn Header="PassiveEffect" Binding="{Binding PassiveEffect}"/>
+                    <DataGridTextColumn Header="PassiveEffectBonus" Binding="{Binding PassiveEffectBonus}"/>
+                    <DataGridTextColumn Header="PassiveEffectTarget" Binding="{Binding PassiveEffectTarget}"/>
+                    <DataGridTextColumn Header="MobID" Binding="{Binding MobID}"/>
+                    <DataGridTextColumn Header="CardID" Binding="{Binding CardID}"/>
+                    <DataGridTextColumn Header="SkillID" Binding="{Binding SkillID}"/>
+                    <DataGridTextColumn Header="PassiveEffectID" Binding="{Binding PassiveEffectID}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

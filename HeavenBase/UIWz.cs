@@ -21,7 +21,17 @@ namespace HeavenBase
         // FamiliarCard.img/{FamiliarID}/normal/0
         public Bitmap GetCardImage(int familiarID)
         {
-            Bitmap cardImage = FamiliarCardImage?.GetFromPath($@"{familiarID.ToString()}/normal/0").GetBitmap();
+            Bitmap cardImage = null;
+            if (FamiliarCardImage?.GetFromPath($@"{familiarID.ToString()}/normal/0/_inlink") == null)
+            {
+                cardImage = FamiliarCardImage?.GetFromPath($@"{familiarID.ToString()}/normal/0").GetBitmap();
+            }
+            else
+            {
+                string inlink = FamiliarCardImage?.GetFromPath($@"{familiarID.ToString()}/normal/0/_inlink").GetString();
+                cardImage = FamiliarCardImage?.GetFromPath($@"{inlink}").GetBitmap();
+            }
+            
             return cardImage;
         }
     }

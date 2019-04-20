@@ -37,3 +37,23 @@ C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Release\HeavenBas
 C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Release\HeavenBase.csproj.CopyComplete
 C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Release\HeavenBase.exe
 C:\Users\rodri\Google Drive\MapleRip\HeavenBase\HeavenBase\obj\Release\HeavenBase.pdb
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\HeavenBase.exe.config
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\HeavenBase.exe
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\HeavenBase.pdb
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\MapleLib.dll
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\NAudio.dll
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\NAudio.pdb
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\bin\Release\NAudio.xml
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.csprojAssemblyReference.cache
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\MainWindow.g.cs
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\App.g.cs
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase_MarkupCompile.cache
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase_MarkupCompile.lref
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\MainWindow.baml
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.g.resources
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.Properties.Resources.resources
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.csproj.GenerateResource.cache
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.csproj.CoreCompileInputs.cache
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.csproj.CopyComplete
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.exe
+C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Release\HeavenBase.pdb

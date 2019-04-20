@@ -14,6 +14,7 @@ using System.Globalization;
 using System.Drawing.Imaging;
 using System.Windows.Media.Imaging;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace HeavenBase
 {
@@ -47,38 +48,48 @@ namespace HeavenBase
             int loopNumber = character.GetFamiliarQuantity();
             for (int i = 0; i < loopNumber; i++)
             {
-                
                 int familiarID = character.GetFamiliarID(i);
                 character.SetFamiliarImage(familiarID);
                 int mobID = etc.GetMobID(familiarID);
                 mob.SetMobImage(mobID, mobFile);
                 mob2.SetMobImage(mobID, mob2File);
+                MobWz realMob;
+                if (mob.MobImage != null)
+                {
+                    realMob = mob;
+                }
+                else
+                {
+                    realMob = mob2;
+                }
                 int skillID = character.GetSkillID();
                 int passiveEffectID = etc.GetPassiveEffectID(familiarID);
                 int cardID = etc.GetCardID(familiarID);
                 int level = character.GetLevel(); // DON'T CHANGE THE ORDER, OR IT'LL BE MESSED UP
-                if (level == 0) {
-                    level = mob.GetLevel();
-                }
                 if (level == 0)
                 {
-                    level = mob2.GetLevel();
+                    level = realMob.GetLevel();
                 }
                 int att = character.GetATT(); // SAME AS LEVEL, DON'T CHANGE ORDER
                 if (att == 0)
                 {
-                    att = mob.GetATT();
+                    att = realMob.GetATT();
                 }
-                if (att == 0)
-                {
-                    att = mob2.GetATT();
-                }
+                Bitmap mobImage = realMob.GetMobImage();
+                BitmapSource finalCardImage = CreateBitmapSourceFromGdiBitmap(ui.GetCardImage(familiarID));
+                BitmapSource finalMobImage = CreateBitmapSourceFromGdiBitmap(mobImage);
+                int hasCardImage = 1;
+                int hasMobImage = 1;
+                if(finalCardImage.Height <= 1)
+                    hasCardImage = 0;
+                if (finalMobImage == null)
+                    hasMobImage = 0;
+
                 familiars.Add(new Familiar()
                 {
                     FamiliarID = familiarID,
                     MobID = mobID,
                     MobName = stringM.GetMobName(mobID),
-                    //CardImage = ui.GetCardImage(familiarID),
                     SkillID = skillID,
                     SkillName = stringM.GetSkillName(skillID),
                     SkillDescription = stringM.GetSkillDesc(skillID),
@@ -93,6 +104,10 @@ namespace HeavenBase
                     ATT = att,
                     PassiveEffectTarget = item.GetPassiveEffectTarget(passiveEffectID),
                     PassiveEffectBonus = item.GetPassiveEffectBonus(passiveEffectID),
+                    CardImage = finalCardImage,
+                    MobImage = finalMobImage,
+                    HasCardImage = hasCardImage,
+                    HasMobImage = hasMobImage,
                 });
             }
             characterFile.Dispose();
@@ -149,5 +164,40 @@ namespace HeavenBase
         }
         #endregion
 
+        public static BitmapSource CreateBitmapSourceFromGdiBitmap(Bitmap bitmap)
+        {
+            if (bitmap == null)
+            {
+                return null;
+                //throw new ArgumentNullException("bitmap");
+            }
+
+            var rect = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+
+            var bitmapData = bitmap.LockBits(
+                rect,
+                ImageLockMode.ReadWrite,
+                System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            try
+            {
+                var size = (rect.Width * rect.Height) * 4;
+
+                return BitmapSource.Create(
+                    bitmap.Width,
+                    bitmap.Height,
+                    bitmap.HorizontalResolution,
+                    bitmap.VerticalResolution,
+                    PixelFormats.Bgra32,
+                    null,
+                    bitmapData.Scan0,
+                    size,
+                    bitmapData.Stride);
+            }
+            finally
+            {
+                bitmap.UnlockBits(bitmapData);
+            }
+        }
     }
 }
