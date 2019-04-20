@@ -13,3 +13,7 @@ TEXT
 TOOL
 
 {{Useable/Familiar <!--$15-->|name=$5<!--$1-->|image=[[File:Use $5.png]]|lvl=$2|rar=$6|cat=$8|skilln=$7|desc=$9|att=$3|range=$10|passive=$11|passivea=$12|target=$13|mob=[[$4]]|note=}}{{Items}}
+
+INSTRUCTIONS
+
+Enter the [LINK], then paste the [TOOL] below the List area, and paste the Familiar Row into [TEXT] area.
