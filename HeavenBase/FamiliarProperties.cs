@@ -131,6 +131,39 @@ namespace HeavenBase
         }
         #endregion
 
+        public static List<Weapon> LoadWeaponData(string chosenPath, string category)
+        {
+            List<Weapon> weapons = new List<Weapon>();
+            WzFile characterFile = new WzFile(PathIO.Combine(chosenPath, "Character.wz"), WzMapleVersion.CLASSIC);
+            WzFile stringFile = new WzFile(PathIO.Combine(chosenPath, "String.wz"), WzMapleVersion.CLASSIC);
+            CharacterWz character = new CharacterWz(characterFile, category);
+            StringWz stringM = new StringWz(stringFile);
+            int loopNumber = character.GetWeaponQuantity();
+            for (int i = 0; i < loopNumber; i++)
+            {
+                int weaponID = character.GetWeaponID(i);
+                string weaponName = stringM.GetWeaponName(weaponID, category);
+                BitmapSource weaponImage = CreateBitmapSourceFromGdiBitmap(character.GetWeaponImage(characterFile));
+                int hasWeaponImage = 1;
+                if (weaponImage.Height <= 1)
+                    hasWeaponImage = 0;
+
+                weapons.Add(new Weapon()
+                {
+                    WeaponID = weaponID,
+                    WeaponName = weaponName,
+                    WeaponImage = weaponImage,
+                    HasWeaponImage = hasWeaponImage,
+                });
+            }
+            characterFile.Dispose();
+            characterFile = null;
+            stringFile.Dispose();
+            stringFile = null;
+
+            return weapons;
+        }
+
         #region PathValidator
         /// <summary>
         /// Checks if the given path is the root of .wz files (at least for Character.wz)
@@ -144,7 +177,15 @@ namespace HeavenBase
             {
                 try
                 {
-                    characterFile.ParseWzFile();
+                    try
+                    {
+                        characterFile.ParseWzFile();
+                    }
+                    catch (NotSupportedException)
+                    {
+                        return false;
+                    }
+                    
                 }
                 catch (FileNotFoundException)
                 {

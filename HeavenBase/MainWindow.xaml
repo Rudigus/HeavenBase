@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:custom="clr-namespace:HeavenBase"
         mc:Ignorable="d"
-        Title="HeavenBase" Height="400" Width="600"
+        Title="HeavenBase" Height="600" Width="800"
         ResizeMode="CanResizeWithGrip"
         WindowState="Maximized"
         Style="{DynamicResource WindowStyle}">
@@ -38,7 +38,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -50,55 +50,186 @@
             <Button Margin="0 0 10 0"  x:Name="LoadButton" Click="LoadButton_Click" Grid.Row="1" Grid.Column="1" Content="Load"/>
             <TextBlock Grid.Row="0" Grid.Column="2">Search</TextBlock>
             <TextBox x:Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" Grid.Row="1" Grid.Column="2"/>
-            <TabControl Grid.Row="2" Grid.ColumnSpan="3">
-                <TabItem>
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="pack://application:,,,/resources/BigSpiderFamiliar.png"/>
-                            <TextBlock Margin="5" VerticalAlignment="Center">Familiars</TextBlock>
-                        </StackPanel>
-                    </TabItem.Header>
-                </TabItem>
-            </TabControl>
             <CheckBox x:Name="RowSelectionCheckbox" Content="RowSelection" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" 
                       Checked="RowSelectionCheckbox_Checked" Unchecked="RowSelectionCheckbox_Unchecked"/>
-            <DataGrid x:Name="familiarGrid" IsReadOnly="True" SelectionUnit="CellOrRowHeader" 
-                              MinRowHeight="30" Grid.Row="3" Grid.ColumnSpan="3"
-                      AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="FamiliarID" Binding="{Binding FamiliarID}"/>
-                    <DataGridTemplateColumn Header="MobImage" SortMemberPath="HasMobImage">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Stretch="None" Source="{Binding MobImage}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="CardImage" SortMemberPath="HasCardImage">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Stretch="None" Source="{Binding CardImage}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Level" Binding="{Binding Level}"/>
-                    <DataGridTextColumn Header="ATT" Binding="{Binding ATT}"/>
-                    <DataGridTextColumn Header="MobName" Binding="{Binding MobName}"/>
-                    <DataGridTextColumn Header="CardName" Binding="{Binding CardName}"/>
-                    <DataGridTextColumn Header="Rarity" Binding="{Binding Rarity}"/>
-                    <DataGridTextColumn Header="SkillName" Binding="{Binding SkillName}"/>
-                    <DataGridTextColumn Header="SkillCategory" Binding="{Binding SkillCategory}"/>
-                    <DataGridTextColumn Header="SkillDescription" Binding="{Binding SkillDescription}"/>
-                    <DataGridTextColumn Header="Range" Binding="{Binding Range}"/>
-                    <DataGridTextColumn Header="PassiveEffect" Binding="{Binding PassiveEffect}"/>
-                    <DataGridTextColumn Header="PassiveEffectBonus" Binding="{Binding PassiveEffectBonus}"/>
-                    <DataGridTextColumn Header="PassiveEffectTarget" Binding="{Binding PassiveEffectTarget}"/>
-                    <DataGridTextColumn Header="MobID" Binding="{Binding MobID}"/>
-                    <DataGridTextColumn Header="CardID" Binding="{Binding CardID}"/>
-                    <DataGridTextColumn Header="SkillID" Binding="{Binding SkillID}"/>
-                    <DataGridTextColumn Header="PassiveEffectID" Binding="{Binding PassiveEffectID}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <TextBlock x:Name="LoadingTimeBox" Grid.Row="2" Grid.Column="2"
+                       VerticalAlignment="Center" HorizontalAlignment="Center">
+                Loading Time: 
+            </TextBlock>
+            <DockPanel Grid.Row="3" Grid.ColumnSpan="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TabControl x:Name="DataPicker" Grid.Row="3"
+                        SelectionChanged="DataPicker_SelectionChanged"
+                        TabStripPlacement="Left" DockPanel.Dock="Left">
+                        <TabItem x:Name="FamiliarTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/BigSpiderFamiliar.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Familiars</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="WeaponTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/FrozenTuna.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Weapons</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="CapTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/ZakumHelmet.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Hats</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="AccessoryTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/GreedPendant.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Accessories</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="AndroidTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/Battle-Roid.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Androids</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="CapeTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/PinkAdventurerCape.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Capes</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="CoatTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/WhiteUndershirt.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Tops</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="GloveTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/WorkGloves.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Gloves</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="LongcoatTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/Bathrobe.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Overalls</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="PantsTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/JeanCapris.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Bottoms</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="RingTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/ZombieArmyRing.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Rings</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="ShieldTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/PanLid.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Shields</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem x:Name="ShoesTab">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/resources/VioletSnowshoes.png"/>
+                                    <TextBlock Margin="5" VerticalAlignment="Center">Shoes</TextBlock>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                    </TabControl>
+                </ScrollViewer>
+                <DataGrid x:Name="FamiliarGrid" IsReadOnly="True" SelectionUnit="CellOrRowHeader" 
+                              MinRowHeight="30" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                      AutoGenerateColumns="False" SelectedCellsChanged="FamiliarGrid_SelectedCellsChanged"
+                          DockPanel.Dock="Right">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Familiar ID" Binding="{Binding FamiliarID}"/>
+                        <DataGridTemplateColumn Header="Card Image" SortMemberPath="HasCardImage">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Stretch="None" Source="{Binding CardImage}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Card Name" Binding="{Binding CardName}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid x:Name="EquipGrid" IsReadOnly="True" SelectionUnit="CellOrRowHeader" 
+                              MinRowHeight="30" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                      AutoGenerateColumns="False" Visibility="Collapsed"
+                      VirtualizingStackPanel.VirtualizationMode="Recycling" DockPanel.Dock="Right">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding WeaponID}"/>
+                        <DataGridTemplateColumn Header="Image" SortMemberPath="HasImage">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Stretch="None" Source="{Binding WeaponImage}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Name" Binding="{Binding WeaponName}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="FamiliarInfoBox" Orientation="Vertical">
+                        <Image Stretch="None" x:Name="MobImage"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="MobLevel"></TextBlock>
+                            <TextBlock x:Name="MobName"></TextBlock>
+                        </StackPanel>
+                        <TextBlock x:Name="MobRarity"></TextBlock>
+
+                        <TextBlock x:Name="MobATT"></TextBlock>
+                        <TextBlock x:Name="MobRange"></TextBlock>
+
+                        <TextBlock x:Name="MobSkillName"></TextBlock>
+                        <TextBlock x:Name="MobSkillCategory"></TextBlock>
+                        <TextBlock x:Name="MobSkillDescription"></TextBlock>
+
+                        <TextBlock x:Name="MobPassiveEffect"></TextBlock>
+                        <TextBlock x:Name="MobPassiveEffectBonus"></TextBlock>
+                        <TextBlock x:Name="MobPassiveEffectTarget"></TextBlock>
+
+                        <TextBlock x:Name="MobID"></TextBlock>
+                        <TextBlock x:Name="MobCardID"></TextBlock>
+                        <TextBlock x:Name="MobPassiveEffectID"></TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+                <StackPanel x:Name="EquipInfoBox" Orientation="Vertical"
+                            Visibility="Collapsed">
+                    <TextBlock>eita</TextBlock>
+                </StackPanel>
+            </DockPanel>
         </Grid>
     </Border>
 </Window>

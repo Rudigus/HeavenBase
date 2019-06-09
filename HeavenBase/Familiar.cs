@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 
 namespace HeavenBase
 {
     public class Familiar
     {
         public int HasCardImage { get; set; }
-
         public int HasMobImage { get; set; }
         public int FamiliarID { get; set; } // CharacterWz - GetFamiliarID()
         public BitmapSource CardImage { get; set; } // UIWz - GetCardImage() - Can be found at ItemWz Consume too

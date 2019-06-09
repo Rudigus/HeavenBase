@@ -12,6 +12,7 @@ namespace HeavenBase
         private readonly WzImage FamiliarImage;
         private readonly WzImage MobImage;
         private readonly WzImage ConsumeImage;
+        private readonly WzImage EqpImage;
 
         public StringWz(WzFile StringWZ)
         {
@@ -19,6 +20,7 @@ namespace HeavenBase
             FamiliarImage = StringWZ.WzDirectory.GetImageByName("Familiar.img");
             MobImage = StringWZ.WzDirectory.GetImageByName("Mob.img");
             ConsumeImage = StringWZ.WzDirectory.GetImageByName("Consume.img");
+            EqpImage = StringWZ.WzDirectory.GetImageByName("Eqp.img");
         }
 
         // Familiar.img/skill/{SkillID}/name
@@ -47,6 +49,15 @@ namespace HeavenBase
         {
             string cardName = ConsumeImage?.GetFromPath($@"{cardID}/name").GetString();
             return cardName;
+        }
+
+        // Eqp.img/Eqp/Weapon/{WeaponID}/name
+        public string GetWeaponName(int weaponID, string category)
+        {
+            if (EqpImage?.GetFromPath($@"Eqp/{category}/{weaponID}/name") == null)
+                return "";
+            string weaponName = EqpImage?.GetFromPath($@"Eqp/{category}/{weaponID}/name").GetString();
+            return weaponName;
         }
 
         // Consume.img/{PassiveEffectID}/desc

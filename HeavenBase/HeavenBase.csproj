@@ -71,6 +71,7 @@
     <Compile Include="Skill001Wz.cs" />
     <Compile Include="StringWz.cs" />
     <Compile Include="UIWz.cs" />
+    <Compile Include="Weapon.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +121,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\BigSpiderFamiliar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\FrozenTuna.png" />
+    <Resource Include="resources\ZakumHelmet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Bathrobe.png" />
+    <Resource Include="resources\Battle-Roid.png" />
+    <Resource Include="resources\GreedPendant.png" />
+    <Resource Include="resources\JeanCapris.png" />
+    <Resource Include="resources\PanLid.png" />
+    <Resource Include="resources\PinkAdventurerCape.png" />
+    <Resource Include="resources\VioletSnowshoes.png" />
+    <Resource Include="resources\WhiteUndershirt.png" />
+    <Resource Include="resources\WorkGloves.png" />
+    <Resource Include="resources\ZombieArmyRing.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
