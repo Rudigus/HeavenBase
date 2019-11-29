@@ -19,7 +19,7 @@ namespace HeavenBase
         public string SkillDescription { get; set; } // StringWz - GetSkillDesc()
         public int Range { get; set; } // CharacterWz - GetRange()
         public string PassiveEffect { get; set; } // StringWz - GetPassiveEffect()
-        public string PassiveEffectBonus { get; set; }
+        public string PassiveEffectBonus { get; set; } // ItemWz - GetPassiveEffectBonus()
         public string PassiveEffectTarget { get; set; } // ItemWz - GetPassiveEffectTarget()
         public int MobID { get; set; } // EtcWz - GetMobID()
         public int CardID { get; set; } // EtcWz - GetCardID()

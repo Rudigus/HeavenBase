@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MapleLib;
 using MapleLib.WzLib;
-using MapleLib.WzLib.WzProperties;
 using PathIO = System.IO.Path;
 using System.IO;
 using System.Drawing;
-using System.Windows.Controls;
-using System.Globalization;
 using System.Drawing.Imaging;
 using System.Windows.Media.Imaging;
-using System.Windows.Data;
 using System.Windows.Media;
 
 namespace HeavenBase
@@ -39,7 +31,7 @@ namespace HeavenBase
             WzFile itemFile = new WzFile(PathIO.Combine(chosenPath, "Item.wz"), WzMapleVersion.CLASSIC);
             CharacterWz character = new CharacterWz(characterFile);
             EtcWz etc = new EtcWz(etcFile);
-            StringWz stringM = new StringWz(stringFile);
+            StringWz stringM = new StringWz(stringFile, true);
             UIWz ui = new UIWz(uiFile);
             MobWz mob = new MobWz(mobFile);
             MobWz mob2 = new MobWz(mob2File);
@@ -118,50 +110,69 @@ namespace HeavenBase
             mob2File.Dispose();
             skill001File.Dispose();
             itemFile.Dispose();
-            characterFile = null;
-            etcFile = null;
-            stringFile = null;
-            uiFile = null;
-            mobFile = null;
-            mob2File = null;
-            skill001File = null;
-            itemFile = null;
 
             return familiars;
         }
         #endregion
 
-        public static List<Weapon> LoadWeaponData(string chosenPath, string category)
+        public static List<Equip> LoadEquipData(string chosenPath, string category)
         {
-            List<Weapon> weapons = new List<Weapon>();
+            List<Equip> equips = new List<Equip>();
             WzFile characterFile = new WzFile(PathIO.Combine(chosenPath, "Character.wz"), WzMapleVersion.CLASSIC);
             WzFile stringFile = new WzFile(PathIO.Combine(chosenPath, "String.wz"), WzMapleVersion.CLASSIC);
             CharacterWz character = new CharacterWz(characterFile, category);
-            StringWz stringM = new StringWz(stringFile);
-            int loopNumber = character.GetWeaponQuantity();
+            StringWz stringM = new StringWz(stringFile, false);
+            int loopNumber = character.GetEquipQuantity();
             for (int i = 0; i < loopNumber; i++)
             {
-                int weaponID = character.GetWeaponID(i);
-                string weaponName = stringM.GetWeaponName(weaponID, category);
-                BitmapSource weaponImage = CreateBitmapSourceFromGdiBitmap(character.GetWeaponImage(characterFile));
-                int hasWeaponImage = 1;
-                if (weaponImage.Height <= 1)
-                    hasWeaponImage = 0;
-
-                weapons.Add(new Weapon()
+                int equipID = character.GetEquipID(i);
+                string equipName = stringM.GetEquipName(equipID, category);
+                string equipClassification = character.GetEquipClassification();
+                BitmapSource equipImage = CreateBitmapSourceFromGdiBitmap(character.GetEquipImage(characterFile));
+                int hasEquipImage = 1;
+                if (equipImage.Height <= 1)
+                    hasEquipImage = 0;
+                if (equipClassification == "Cash")
                 {
-                    WeaponID = weaponID,
-                    WeaponName = weaponName,
-                    WeaponImage = weaponImage,
-                    HasWeaponImage = hasWeaponImage,
+                    equips.Add(new Equip()
+                    {
+                        /* Missing Int Properties don't make the program crash, like Level. 
+                         * But I'll put it anyway for organization sake.
+                         */
+                        EquipID = equipID,
+                        EquipName = equipName,
+                        EquipImage = equipImage,
+                        HasEquipImage = hasEquipImage,
+                        EquipLevel = 0,
+                        EquipClassification = equipClassification,
+                        EquipType = "",
+                        RequiredStats = "",
+                        RequiredJob = "",
+                        TotalUpgradeCount = 0,
+                        EquipStats = "",
+                    });
+                    continue;
+                }
+
+                equips.Add(new Equip()
+                {
+                    EquipID = equipID,
+                    EquipName = equipName,
+                    EquipImage = equipImage,
+                    HasEquipImage = hasEquipImage,
+                    EquipLevel = character.GetEquipLevel(),
+                    EquipClassification = equipClassification,
+                    EquipType = character.GetEquipType(equipID),
+                    RequiredStats = character.GetRequiredStats(),
+                    RequiredJob = character.GetRequiredJob(equipID),
+                    TotalUpgradeCount = character.GetTotalUpgradeCount(),
+                    EquipStats = character.GetEquipStats(),
                 });
             }
             characterFile.Dispose();
-            characterFile = null;
             stringFile.Dispose();
-            stringFile = null;
 
-            return weapons;
+            return equips;
         }
 
         #region PathValidator

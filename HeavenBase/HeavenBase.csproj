@@ -71,7 +71,7 @@
     <Compile Include="Skill001Wz.cs" />
     <Compile Include="StringWz.cs" />
     <Compile Include="UIWz.cs" />
-    <Compile Include="Weapon.cs" />
+    <Compile Include="Equip.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

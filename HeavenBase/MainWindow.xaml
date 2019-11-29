@@ -187,17 +187,18 @@
                 <DataGrid x:Name="EquipGrid" IsReadOnly="True" SelectionUnit="CellOrRowHeader" 
                               MinRowHeight="30" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                       AutoGenerateColumns="False" Visibility="Collapsed"
-                      VirtualizingStackPanel.VirtualizationMode="Recycling" DockPanel.Dock="Right">
+                      VirtualizingStackPanel.VirtualizationMode="Recycling" DockPanel.Dock="Right"
+                          SelectedCellsChanged="EquipGrid_SelectedCellsChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding WeaponID}"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding EquipID}"/>
                         <DataGridTemplateColumn Header="Image" SortMemberPath="HasImage">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Stretch="None" Source="{Binding WeaponImage}"/>
+                                    <Image Stretch="None" Source="{Binding EquipImage}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Name" Binding="{Binding WeaponName}"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding EquipName}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
@@ -225,10 +226,22 @@
                         <TextBlock x:Name="MobPassiveEffectID"></TextBlock>
                     </StackPanel>
                 </ScrollViewer>
-                <StackPanel x:Name="EquipInfoBox" Orientation="Vertical"
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="EquipInfoBox" Orientation="Vertical"
                             Visibility="Collapsed">
-                    <TextBlock>eita</TextBlock>
-                </StackPanel>
+                        <Image Stretch="None" x:Name="EquipImage"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="EquipLevel"></TextBlock>
+                            <TextBlock x:Name="EquipName"></TextBlock>
+                        </StackPanel>
+                        <TextBlock x:Name="EquipClassification"></TextBlock>
+                        <TextBlock x:Name="EquipType"></TextBlock>
+                        <TextBlock x:Name="RequiredStats"></TextBlock>
+                        <TextBlock x:Name="RequiredJob"></TextBlock>
+                        <TextBlock x:Name="EquipStats"></TextBlock>
+                        <TextBlock x:Name="TotalUpgradeCount"></TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
             </DockPanel>
         </Grid>
     </Border>

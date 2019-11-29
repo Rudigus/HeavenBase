@@ -9,19 +9,10 @@ namespace HeavenBase
 {
     class StringWz
     {
+        #region Familiar
         private readonly WzImage FamiliarImage;
         private readonly WzImage MobImage;
         private readonly WzImage ConsumeImage;
-        private readonly WzImage EqpImage;
-
-        public StringWz(WzFile StringWZ)
-        {
-            StringWZ.ParseWzFile();
-            FamiliarImage = StringWZ.WzDirectory.GetImageByName("Familiar.img");
-            MobImage = StringWZ.WzDirectory.GetImageByName("Mob.img");
-            ConsumeImage = StringWZ.WzDirectory.GetImageByName("Consume.img");
-            EqpImage = StringWZ.WzDirectory.GetImageByName("Eqp.img");
-        }
 
         // Familiar.img/skill/{SkillID}/name
         public string GetSkillName(int skillID)
@@ -51,20 +42,40 @@ namespace HeavenBase
             return cardName;
         }
 
+        // Consume.img/{PassiveEffectID}/desc
+        public string GetPassiveEffect(int passiveEffectID)
+        {
+            string passiveEffect = ConsumeImage?.GetFromPath($@"{passiveEffectID}/desc").GetString();
+            return passiveEffect;
+        }
+        #endregion
+
+        #region Equip
+        private readonly WzImage EqpImage;
+
         // Eqp.img/Eqp/Weapon/{WeaponID}/name
-        public string GetWeaponName(int weaponID, string category)
+        public string GetEquipName(int weaponID, string category)
         {
             if (EqpImage?.GetFromPath($@"Eqp/{category}/{weaponID}/name") == null)
                 return "";
             string weaponName = EqpImage?.GetFromPath($@"Eqp/{category}/{weaponID}/name").GetString();
             return weaponName;
         }
+        #endregion
 
-        // Consume.img/{PassiveEffectID}/desc
-        public string GetPassiveEffect(int passiveEffectID)
+        public StringWz(WzFile StringWZ, bool isFamiliar)
         {
-            string passiveEffect = ConsumeImage?.GetFromPath($@"{passiveEffectID}/desc").GetString();
-            return passiveEffect;
+            StringWZ.ParseWzFile();
+            if (isFamiliar)
+            {
+                FamiliarImage = StringWZ.WzDirectory.GetImageByName("Familiar.img");
+                MobImage = StringWZ.WzDirectory.GetImageByName("Mob.img");
+                ConsumeImage = StringWZ.WzDirectory.GetImageByName("Consume.img");
+            }
+            else
+            {
+                EqpImage = StringWZ.WzDirectory.GetImageByName("Eqp.img");
+            }
         }
     }
 }

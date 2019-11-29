@@ -55,7 +55,7 @@ namespace HeavenBase
                 else
                 {
                     string category = activeTab.Name.Substring(0, activeTab.Name.Length - 3);
-                    GetActiveGrid().ItemsSource = FamiliarProperties.LoadWeaponData(chosenPath, category);
+                    GetActiveGrid().ItemsSource = FamiliarProperties.LoadEquipData(chosenPath, category);
                 }
                 stopwatch.Stop();
                 TimeSpan timespan = stopwatch.Elapsed;
@@ -176,14 +176,18 @@ namespace HeavenBase
 
             TabItem chosenTab = ((sender as TabControl).SelectedItem as TabItem);
             if(chosenTab.Name == "FamiliarTab")
-            {
+            { 
                 datagrids[0].Visibility = Visibility.Visible;
+                FamiliarInfoBox.Visibility = Visibility.Visible;
                 datagrids[1].Visibility = Visibility.Collapsed;
+                EquipInfoBox.Visibility = Visibility.Collapsed;
             }
             else
             {
                 datagrids[0].Visibility = Visibility.Collapsed;
+                FamiliarInfoBox.Visibility = Visibility.Collapsed;
                 datagrids[1].Visibility = Visibility.Visible;
+                EquipInfoBox.Visibility = Visibility.Visible;
             }
             /*
             foreach (TabItem tab in tabs)
@@ -272,8 +276,8 @@ namespace HeavenBase
 
             MobRarity.Text = $"\nRarity: {familiar.Rarity}";
 
-            MobATT.Text = $"\nATT: {familiar.ATT.ToString()}";
-            MobRange.Text = $"Range: {familiar.Range.ToString()}";
+            MobATT.Text = $"\nATT: {familiar.ATT}";
+            MobRange.Text = $"Range: {familiar.Range}";
 
             MobSkillName.Text = $"\nSkill Name: {familiar.SkillName}";
             MobSkillCategory.Text = $"Skill Category: {familiar.SkillCategory}";
@@ -283,9 +287,9 @@ namespace HeavenBase
             MobPassiveEffectBonus.Text = $"Passive Effect Bonus: {familiar.PassiveEffectBonus}";
             MobPassiveEffectTarget.Text = $"Passive Effect Target: {familiar.PassiveEffectTarget}";
 
-            MobID.Text = $"\nMob ID: {familiar.MobID.ToString()}";
-            MobCardID.Text = $"Card ID: {familiar.CardID.ToString()}";
-            MobPassiveEffectID.Text = $"Passive Effect ID: {familiar.PassiveEffectID.ToString()}";
+            MobID.Text = $"\nMob ID: {familiar.MobID}";
+            MobCardID.Text = $"Card ID: {familiar.CardID}";
+            MobPassiveEffectID.Text = $"Passive Effect ID: {familiar.PassiveEffectID}";
         }
 
         private void ResetInfoPage()
@@ -305,6 +309,52 @@ namespace HeavenBase
             MobID.Text = "";
             MobCardID.Text = "";
             MobPassiveEffectID.Text = "";
+        }
+
+        private void ResetWeaponInfoPage()
+        {
+            EquipImage.Source = null;
+            EquipLevel.Text = "";
+            EquipName.Text = "";
+            EquipClassification.Text = "";
+            EquipType.Text = "";
+            RequiredStats.Text = "";
+            RequiredJob.Text = "";
+            TotalUpgradeCount.Text = "";
+            EquipStats.Text = "";
+        }
+
+        private void EquipGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            var selectedCells = EquipGrid.SelectedCells;
+            if (selectedCells.Count == 0)
+            {
+                ResetWeaponInfoPage();
+                return;
+            }
+            Equip equip = selectedCells[0].Item as Equip;
+            foreach (var selectedCell in selectedCells)
+            {
+                Equip selectedEquip = selectedCell.Item as Equip;
+                if (selectedEquip.EquipID != equip.EquipID)
+                {
+                    ResetWeaponInfoPage();
+                    return;
+                }
+            }
+            EquipImage.Source = equip.EquipImage;
+            EquipLevel.Text = $"Lv. {equip.EquipLevel} ";
+            EquipName.Text = equip.EquipName;
+
+            EquipClassification.Text = $"\nClassification: {equip.EquipClassification}";
+            EquipType.Text = $"\nType: {equip.EquipType}";
+
+            RequiredStats.Text = $"\nRequired Stats: {equip.RequiredStats}";
+            RequiredJob.Text = $"Required Job: {equip.RequiredJob}";
+
+            EquipStats.Text = $"\nStats:\n{equip.EquipStats}";
+
+            TotalUpgradeCount.Text = $"\nAvailable Enhancements: {equip.TotalUpgradeCount}";
         }
     }
 }
