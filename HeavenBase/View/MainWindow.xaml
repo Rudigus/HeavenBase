@@ -9,7 +9,8 @@
         Title="HeavenBase" Height="600" Width="800"
         ResizeMode="CanResizeWithGrip"
         WindowState="Maximized"
-        Style="{DynamicResource WindowStyle}">
+        Style="{DynamicResource WindowStyle}"
+        UseLayoutRounding="True">
     <Window.Resources>
         <Style x:Key="WindowStyle" TargetType="Window">
             <Setter Property="FontFamily" Value="pack://application:,,,/resources/#Exo 2"/>
@@ -200,7 +201,7 @@
                         <DataGridTemplateColumn Header="Image" SortMemberPath="HasImage">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Stretch="None" Source="{Binding EquipImage}"/>
+                                    <Image Stretch="None" Source="{Binding EquipImage, Converter={StaticResource bitmapConverter}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
