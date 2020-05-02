@@ -78,3 +78,4 @@ C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.e
 C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.pdb
 C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\View\MainWindow.g.cs
 C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\View\MainWindow.baml
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\GeneratedInternalTypeHelper.g.cs

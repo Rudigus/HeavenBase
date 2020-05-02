@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -101,7 +102,7 @@ namespace HeavenBase
         private void EventSetter_OnHandlerLostFocus(object sender, RoutedEventArgs e)
         {
             DataGridRow dgr = FindParent<DataGridRow>(sender as DataGridCell);
-            dgr.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFdcdcdc"));
+            dgr.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFdcdcdc"));
         }
 
         public static T FindParent<T>(DependencyObject child) where T : DependencyObject
@@ -159,6 +160,7 @@ namespace HeavenBase
 
         #endregion
 
+        #region RowCheckbox
         private void RowSelectionCheckbox_Checked(object sender, RoutedEventArgs e)
         {
             FamiliarGrid.SelectionUnit = DataGridSelectionUnit.FullRow;
@@ -168,7 +170,9 @@ namespace HeavenBase
         {
             FamiliarGrid.SelectionUnit = DataGridSelectionUnit.CellOrRowHeader;
         }
+        #endregion
 
+        #region Other
         private void DataPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<TabItem> tabs = GetTabs();
@@ -270,7 +274,7 @@ namespace HeavenBase
                     return;
                 }
             }
-            MobImage.Source = familiar.MobImage;
+            MobImage.Source = FamiliarDataSourceProvider.CreateBitmapSourceFromGdiBitmap(familiar.MobImage);
             MobLevel.Text = $"Lv. {familiar.Level} ";
             MobName.Text = familiar.MobName;
 
@@ -342,7 +346,7 @@ namespace HeavenBase
                     return;
                 }
             }
-            EquipImage.Source = equip.EquipImage;
+            EquipImage.Source = FamiliarDataSourceProvider.CreateBitmapSourceFromGdiBitmap(equip.EquipImage);
             EquipLevel.Text = $"Lv. {equip.EquipLevel} ";
             EquipName.Text = equip.EquipName;
 
@@ -356,5 +360,69 @@ namespace HeavenBase
 
             TotalUpgradeCount.Text = $"\nAvailable Enhancements: {equip.TotalUpgradeCount}";
         }
+        #endregion
+
+        #region BinaryManipulation
+        private void SaveBinaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            Directory.CreateDirectory(Path.Combine(dir, "HeavenBase"));
+            string serializationFile = GetSerializationFile(DataPicker, dir);
+            var itemsSource = GetActiveGrid().ItemsSource;
+            if (itemsSource != null)
+            {
+                //serialize
+                using (Stream stream = File.Open(serializationFile, FileMode.Create))
+                {
+                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                    bformatter.Serialize(stream, itemsSource);
+                }
+            }
+            else
+            {
+                MessageBox.Show("There isn't any data to save.", "Empty Data", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void LoadBinaryButton_Click(object sender, RoutedEventArgs e)
+        {
+            string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string serializationFile = GetSerializationFile(DataPicker, dir);
+            if (File.Exists(serializationFile))
+            {
+                //deserialize
+                using (Stream stream = File.Open(serializationFile, FileMode.Open))
+                {
+                    var bformatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                    var data = bformatter.Deserialize(stream);
+                    if (((TabItem)DataPicker.SelectedItem).Name == "FamiliarTab")
+                    {
+                        List<Familiar> familiars = (List<Familiar>)data;
+                        GetActiveGrid().ItemsSource = familiars;
+                    }
+                    else
+                    {
+                        List<Equip> equips = (List<Equip>)data;
+                        GetActiveGrid().ItemsSource = equips;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("The binary file was not found.", "File not Found", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private string GetSerializationFile(TabControl tabControl, string dir)
+        {
+            // A tab named FamiliarTab would be turned into Familiars
+            string filename = ((TabItem)tabControl.SelectedItem).Name;
+            filename = filename.Substring(0, filename.Length - 3) + "s";
+            string serializationFile = Path.Combine(dir, $"HeavenBase/{filename}.bin");
+            return serializationFile;
+        }
+        #endregion
     }
 }

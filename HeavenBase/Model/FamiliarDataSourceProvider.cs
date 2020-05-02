@@ -76,8 +76,10 @@ namespace HeavenBase
                     att = realMob.GetATT();
                 }
                 Bitmap mobImage = realMob.GetMobImage();
-                BitmapSource finalCardImage = CreateBitmapSourceFromGdiBitmap(item.GetCardImage(cardID));
-                BitmapSource finalMobImage = CreateBitmapSourceFromGdiBitmap(mobImage);
+                //BitmapSource finalCardImage = CreateBitmapSourceFromGdiBitmap(item.GetCardImage(cardID));
+                //BitmapSource finalMobImage = CreateBitmapSourceFromGdiBitmap(mobImage);
+                Bitmap finalCardImage = item.GetCardImage(cardID);
+                Bitmap finalMobImage = mobImage;
                 int hasCardImage = 1;
                 int hasMobImage = 1;
                 if (finalCardImage == null || finalCardImage.Height <= 1)
@@ -136,7 +138,7 @@ namespace HeavenBase
                 int equipID = character.GetEquipID(i);
                 string equipName = stringM.GetEquipName(equipID, category);
                 string equipClassification = character.GetEquipClassification();
-                BitmapSource equipImage = CreateBitmapSourceFromGdiBitmap(character.GetEquipImage(characterFile));
+                Bitmap equipImage = character.GetEquipImage(characterFile);
                 int hasEquipImage = 1;
                 if (equipImage.Height <= 1)
                     hasEquipImage = 0;

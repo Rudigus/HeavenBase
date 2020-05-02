@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+using System.Drawing;
+//using System.Windows.Media.Imaging;
 
 namespace HeavenBase
 {
+    [Serializable]
     class Equip
     {
         public int EquipID { get; set; } // CharacterWz - GetEquipID()
         public string EquipName { get; set; } // StringWz - GetEquipName()
-        public BitmapSource EquipImage { get; set; } // CharacterWz - GetEquipImage()
+        public Bitmap EquipImage { get; set; } // CharacterWz - GetEquipImage()
         public int HasEquipImage { get; set; }
         public int EquipLevel { get; set; } // CharacterWz - GetEquipLevel()
         public string EquipClassification { get; set; } // CharacterWz - GetEquipClassification()
