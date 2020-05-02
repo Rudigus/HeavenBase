@@ -58,3 +58,23 @@ C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Debug\Heaven
 C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.GenerateResource.cache
 C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.CoreCompileInputs.cache
 C:\Users\rodri\OneDrive\Área de Trabalho\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.CopyComplete
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\HeavenBase.exe.config
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\HeavenBase.exe
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\HeavenBase.pdb
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\MapleLib.dll
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\NAudio.dll
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\NAudio.pdb
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\bin\Debug\NAudio.xml
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csprojAssemblyReference.cache
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\App.g.cs
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase_MarkupCompile.cache
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase_MarkupCompile.lref
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.g.resources
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.Properties.Resources.resources
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.GenerateResource.cache
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.CoreCompileInputs.cache
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.csproj.CopyComplete
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.exe
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\HeavenBase.pdb
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\View\MainWindow.g.cs
+C:\Users\rodri\Source\Repos\Rudigus\HeavenBase\HeavenBase\obj\Debug\View\MainWindow.baml

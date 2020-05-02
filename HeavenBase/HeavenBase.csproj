@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ExeIcon.ico</ApplicationIcon>
+    <ApplicationIcon>resources\ExeIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MapleLib, Version=2.0.0.0, Culture=neutral, processorArchitecture=AMD64">
@@ -65,14 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EtcWz.cs" />
-    <Compile Include="ItemWz.cs" />
-    <Compile Include="MobWz.cs" />
-    <Compile Include="Skill001Wz.cs" />
-    <Compile Include="StringWz.cs" />
-    <Compile Include="UIWz.cs" />
-    <Compile Include="Equip.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="Parser\EtcWz.cs" />
+    <Compile Include="Parser\ItemWz.cs" />
+    <Compile Include="Parser\MobWz.cs" />
+    <Compile Include="Parser\Skill001Wz.cs" />
+    <Compile Include="Parser\StringWz.cs" />
+    <Compile Include="Parser\UIWz.cs" />
+    <Compile Include="Model\Equip.cs" />
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -80,15 +80,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CharacterWz.cs" />
-    <Compile Include="Familiar.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Parser\CharacterWz.cs" />
+    <Compile Include="Model\Familiar.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FamiliarProperties.cs" />
+    <Compile Include="Model\FamiliarDataSourceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -117,7 +117,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExeIcon.ico" />
+    <Resource Include="resources\ExeIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\BigSpiderFamiliar.png" />
