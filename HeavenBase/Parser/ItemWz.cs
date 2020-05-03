@@ -20,6 +20,30 @@ namespace HeavenBase
             ConsumeImage = ConsumeDirectory.GetImageByName("0286.img");
         }
 
+        // Consume/0287.img/0{CardID}/info/grade
+        public string GetRarity(int cardID)
+        {
+            WzImage image = ConsumeDirectory.GetImageByName("0287.img");
+            int familiarRarityID = image.GetFromPath($@"0{cardID}/info/grade")?.GetInt() ?? -1;
+            string familiarRarity = "";
+            switch (familiarRarityID)
+            {
+                case 0:
+                    familiarRarity = "Common";
+                    break;
+                case 1:
+                    familiarRarity = "Uncommon";
+                    break;
+                case 2:
+                    familiarRarity = "Rare";
+                    break;
+                case 3:
+                    familiarRarity = "Legendary";
+                    break;
+            }
+            return familiarRarity;
+        }
+
         // Consume/0287.img/0{CardID}/info/icon
         public Bitmap GetCardImage(int cardID)
         {
