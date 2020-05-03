@@ -38,6 +38,9 @@
   <PropertyGroup>
     <ApplicationIcon>resources\ExeIcon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HeavenBase.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MapleLib">
       <HintPath>..\References\MapleLib.dll</HintPath>
@@ -82,6 +85,7 @@
     </Compile>
     <Compile Include="Parser\CharacterWz.cs" />
     <Compile Include="Model\Familiar.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -139,4 +143,11 @@
     <Resource Include="resources\ZombieArmyRing.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterResolveReferences">
+    <ItemGroup>
+      <EmbeddedResource Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
+        <LogicalName>%(ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
+      </EmbeddedResource>
+    </ItemGroup>
+  </Target>
 </Project>
