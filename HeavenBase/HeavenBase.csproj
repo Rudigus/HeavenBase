@@ -39,9 +39,8 @@
     <ApplicationIcon>resources\ExeIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MapleLib, Version=2.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MapleLib\bin\Release\MapleLib.dll</HintPath>
+    <Reference Include="MapleLib">
+      <HintPath>..\References\MapleLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
