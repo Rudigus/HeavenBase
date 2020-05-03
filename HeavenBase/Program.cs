@@ -11,6 +11,11 @@ namespace HeavenBase
 {
     public class Program
     {
+        /* 
+         * In simple words, this class, along with some project configuration, makes 
+         * my executable be self-sufficient, I won't need to ship my .exe with
+         * referenced .dlls anymore. Yahoo!
+         */
         [STAThreadAttribute]
         public static void Main()
         {

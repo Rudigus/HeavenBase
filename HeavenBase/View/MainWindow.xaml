@@ -61,7 +61,6 @@
                       Checked="RowSelectionCheckbox_Checked" Unchecked="RowSelectionCheckbox_Unchecked"/>
             <TextBlock x:Name="LoadingTimeBox" Grid.Row="2" Grid.Column="2"
                        VerticalAlignment="Center" HorizontalAlignment="Center">
-                Loading Time: 
             </TextBlock>
             <DockPanel Grid.Row="3" Grid.ColumnSpan="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">

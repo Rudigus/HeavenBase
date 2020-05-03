@@ -12,7 +12,7 @@ namespace HeavenBase
 {
     class FamiliarDataSourceProvider
     {
-        #region DataGridLoader
+        #region FamiliarLoader
         /// <summary>
         /// Gets all the info to be shown by DataGrid
         /// </summary>
@@ -98,7 +98,7 @@ namespace HeavenBase
                     PassiveEffectID = passiveEffectID,
                     PassiveEffect = stringM.GetPassiveEffect(passiveEffectID),
                     Range = character.GetRange(),
-                    Rarity = character.GetRarity(),
+                    Rarity = item.GetRarity(cardID),
                     CardID = cardID,
                     CardName = stringM.GetCardName(cardID),
                     SkillCategory = skill001.GetSkillCategory(skillID),
@@ -125,6 +125,7 @@ namespace HeavenBase
         }
         #endregion
 
+        #region EquipLoader
         public static List<Equip> LoadEquipData(string chosenPath, string category)
         {
             List<Equip> equips = new List<Equip>();
@@ -184,6 +185,7 @@ namespace HeavenBase
 
             return equips;
         }
+        #endregion
 
         #region PathValidator
         /// <summary>
@@ -226,6 +228,7 @@ namespace HeavenBase
         }
         #endregion
 
+        #region BitmapToBitmapSource
         public static BitmapSource CreateBitmapSourceFromGdiBitmap(Bitmap bitmap)
         {
             if (bitmap == null)
@@ -261,5 +264,6 @@ namespace HeavenBase
                 bitmap.UnlockBits(bitmapData);
             }
         }
+        #endregion
     }
 }

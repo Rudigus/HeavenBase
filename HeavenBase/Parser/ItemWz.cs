@@ -32,13 +32,13 @@ namespace HeavenBase
                     familiarRarity = "Common";
                     break;
                 case 1:
-                    familiarRarity = "Uncommon";
-                    break;
-                case 2:
                     familiarRarity = "Rare";
                     break;
+                case 2:
+                    familiarRarity = "Epic";
+                    break;
                 case 3:
-                    familiarRarity = "Legendary";
+                    familiarRarity = "Unique";
                     break;
             }
             return familiarRarity;

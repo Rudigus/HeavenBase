@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -46,25 +47,58 @@ namespace HeavenBase
                     MessageBox.Show("The .wz files were not found.", "Invalid Path", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                TabItem activeTab = (TabItem) DataPicker.SelectedItem;
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                if (activeTab.Name == "FamiliarTab")
-                {
-                    FamiliarGrid.ItemsSource = FamiliarDataSourceProvider.LoadCollectionData(chosenPath);
-                }
-                else
-                {
-                    string category = activeTab.Name.Substring(0, activeTab.Name.Length - 3);
-                    GetActiveGrid().ItemsSource = FamiliarDataSourceProvider.LoadEquipData(chosenPath, category);
-                }
-                stopwatch.Stop();
-                TimeSpan timespan = stopwatch.Elapsed;
-                LoadingTimeBox.Text = $"Loading Time: {timespan.Minutes:D2}:{timespan.Seconds:D2}:{timespan.Milliseconds:D2}";
+                SearchTextBox.IsEnabled = false;
+                LoadButton.IsEnabled = false;
+                Thread loadDataThread = new Thread(asyncLoad);
+                /* 
+                 * If the executable is terminated, there's no point in keeping the loading
+                 * process alive, so the thread is a background thread. If it was something
+                 * that made sense running even after executable termination, it would be
+                 * well suited for a foreground thread.
+                 */
+                loadDataThread.IsBackground = true;
+                TabItem activeTab = (TabItem)DataPicker.SelectedItem;
+                loadDataThread.Name = activeTab.Name.Substring(0, activeTab.Name.Length - 3);
+                string presentedTabName = ((TextBlock)((StackPanel)activeTab.Header).Children[1]).Text;
+                LoadingTimeBox.Text = $"Loading {presentedTabName}...";
+                loadDataThread.Start();
             }
             catch (IOException)
             {
                 MessageBox.Show("The .wz files are being used by another application.", "Access Conflict", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void asyncLoad()
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            string threadName = Thread.CurrentThread.Name;
+            if (threadName == "Familiar")
+            {
+                List<Familiar> itemsSource = FamiliarDataSourceProvider.LoadCollectionData(chosenPath);
+                this.Dispatcher.Invoke((Action)(() =>
+                {//this refer to form in WPF application 
+                    FamiliarGrid.ItemsSource = itemsSource;
+                    stopwatch.Stop();
+                    TimeSpan timespan = stopwatch.Elapsed;
+                    LoadingTimeBox.Text = $"Loading Time: {timespan.Minutes:D2}:{timespan.Seconds:D2}:{timespan.Milliseconds:D2}";
+                    SearchTextBox.IsEnabled = true;
+                    LoadButton.IsEnabled = true;
+                }));
+            }
+            else
+            {
+                List<Equip> itemsSource = FamiliarDataSourceProvider.LoadEquipData(chosenPath, threadName);
+                this.Dispatcher.Invoke((Action)(() =>
+                {//this refer to form in WPF application 
+                    GetActiveGrid().ItemsSource = itemsSource;
+                    stopwatch.Stop();
+                    TimeSpan timespan = stopwatch.Elapsed;
+                    LoadingTimeBox.Text = $"Loading Time: {timespan.Minutes:D2}:{timespan.Seconds:D2}:{timespan.Milliseconds:D2}";
+                    SearchTextBox.IsEnabled = true;
+                    LoadButton.IsEnabled = true;
+                }));
             }
         }
         #endregion
